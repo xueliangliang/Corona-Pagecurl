@@ -40,15 +40,21 @@ display.setStatusBar( display.HiddenStatusBar )
 
 -- create example pages
 local page1 = display.newImageRect( "page1.jpg", display.contentWidth, display.contentHeight )
-page1:setReferencePoint( display.TopleftReferencePoint )
-page1.x, page1.y = display.contentWidth*0.5, display.contentHeight*0.5
+--page1:setReferencePoint( display.TopleftReferencePoint )
+page1.anchorX = 0
+page1.anchorY = 0
+page1.x, page1.y = 0,0
 
 local page2 = display.newImageRect( "page2.jpg", display.contentWidth, display.contentHeight )
-page2.x, page2.y = display.contentWidth*0.5, display.contentHeight*0.5
+page2.anchorX = 0
+page2.anchorY = 0
+page2.x, page2.y = 0,0
 page2:toBack()	-- make sure 2nd page is underneath the first one
 
 local curlPage = display.newImageRect( "curlPage.png", display.contentWidth, display.contentHeight )
-curlPage.x, curlPage.y = display.contentWidth*0.5, display.contentHeight*0.5
+curlPage.anchorX = 0
+curlPage.anchorY = 0
+curlPage.x, curlPage.y = 0, 0
 curlPage.isVisible = false
 
 -- group to hold the page that will be turned (as well as the "curl" page)
@@ -83,8 +89,12 @@ local function gotoNext( currentPage, curlPage, time )
 	turnGroup.maskY = display.contentHeight * 0.5
 
 	-- prepare the page-to-be-turned and the curl image
-	currentPage:setReferencePoint( display.BottomLeftReferencePoint )
-	curlPage:setReferencePoint( display.BottomRightReferencePoint )
+	-- currentPage:setReferencePoint( display.BottomLeftReferencePoint )
+	-- curlPage:setReferencePoint( display.BottomRightReferencePoint )
+	currentPage.anchorX = 0
+	currentPage.anchorY = 1
+	curlPage.anchorX = 1
+	curlPage.anchorY = 1
 	curlPage.rotation = 45
 	curlPage.x = display.contentWidth+(display.contentWidth*0.10)
 	curlPage.y = display.contentHeight + (display.contentHeight*0.25)
