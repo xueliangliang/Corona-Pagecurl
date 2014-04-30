@@ -91,8 +91,8 @@ local function gotoNext( currentPage, curlPage, time )
 	-- prepare the page-to-be-turned and the curl image
 	-- currentPage:setReferencePoint( display.BottomLeftReferencePoint )
 	-- curlPage:setReferencePoint( display.BottomRightReferencePoint )
-	currentPage.anchorX = 0
-	currentPage.anchorY = 0
+	-- currentPage.anchorX = 0
+	-- currentPage.anchorY = 0
 	curlPage.anchorX = 1
 	curlPage.anchorY = 1
 	curlPage.rotation = 45
@@ -107,6 +107,11 @@ local function gotoNext( currentPage, curlPage, time )
 	curlPage.yScale = curlPage.y * 0.2
 end
 
--- initiate page turn after 2 seconds, turn page back after 5 seconds (3 seconds after first turn)
-timer.performWithDelay( 2000, function() gotoNext( page1, curlPage, 500 ); end )
-timer.performWithDelay( 5000, function() gotoPrevious( curlPage, 500 ); end )
+local function animationCurl()
+	-- initiate page turn after 2 seconds, turn page back after 5 seconds (3 seconds after first turn)
+	timer.performWithDelay( 2000, function() gotoNext( page1, curlPage, 500 ); end )
+	timer.performWithDelay( 5000, function() gotoPrevious( curlPage, 500 ); end )
+	timer.performWithDelay( 7000, function() animationCurl(); end )
+end
+
+animationCurl()
