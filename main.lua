@@ -92,7 +92,7 @@ local function gotoNext( currentPage, curlPage, time )
 	-- currentPage:setReferencePoint( display.BottomLeftReferencePoint )
 	-- curlPage:setReferencePoint( display.BottomRightReferencePoint )
 	currentPage.anchorX = 0
-	currentPage.anchorY = 1
+	currentPage.anchorY = 0
 	curlPage.anchorX = 1
 	curlPage.anchorY = 1
 	curlPage.rotation = 45
